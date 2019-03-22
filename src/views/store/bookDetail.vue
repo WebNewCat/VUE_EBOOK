@@ -51,7 +51,7 @@
           </div>
         </div>
       </div>
-<!--      <div class="book-detail-content-wrapper">
+      <div class="book-detail-content-wrapper">
         <div class="book-detail-content-title">{{$t('detail.trial')}}</div>
         <div class="book-detail-content-list-wrapper">
           <div class="loading-text-wrapper" v-if="!this.displayed">
@@ -59,10 +59,11 @@
           </div>
         </div>
         <div id="preview" v-show="this.displayed" ref="preview"></div>
-      </div> -->
+      </div>
     </scroll>
     <div class="bottom-wrapper">
       <div class="bottom-btn" @click.stop.prevent="readBook()">{{$t('detail.read')}}</div>
+      <div class="bottom-btn" @click.stop.prevent="trialListening()">{{$t('detail.listen')}}</div>
       <div class="bottom-btn" @click.stop.prevent="addOrRemoveShelf()">
         <span class="icon-check" v-if="inBookShelf"></span>
         {{inBookShelf ? $t('detail.isAddedToShelf') : $t('detail.addOrRemoveShelf')}}
@@ -184,6 +185,27 @@
           }
         })
       },
+      trialListening() {
+        getLocalForage(this.bookItem.fileName, (err, value) => {
+          if (!err && value instanceof Blob) {
+            this.$router.push({
+              path: '/book-store/book-speaking',
+              query: {
+                fileName: this.bookItem.fileName
+              }
+            })
+          } else {
+            // this.showToast(this.$t('shelf.downloadFirst'))
+            this.$router.push({
+              path: '/book-store/book-speaking',
+              query: {
+                fileName: this.bookItem.fileName,
+                opf: this.opf
+              }
+            })
+          }
+        })
+      },
       read(item) {
         getLocalForage(this.bookItem.fileName, (err, value) => {
           if (!err && value instanceof Blob) {
@@ -245,7 +267,6 @@
         this.book.loaded.metadata.then(metadata => {
           this.metadata = metadata
         })
-				console.log(this.book)
         this.book.loaded.navigation.then(nav => {
           this.navigation = nav
           if (this.navigation.toc && this.navigation.toc.length > 1) {

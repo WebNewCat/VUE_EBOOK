@@ -7,6 +7,7 @@
       <div class="empty-text" v-html="$t('shelf.welcome')"></div>
     </div>
     <div class="empty-btn-wrapper">
+      <div class="empty-btn" @click="gotoStudy">{{$t('shelf.studyNow')}}</div>
       <div class="empty-btn" @click="gotoBookStore">{{$t('shelf.find')}}</div>
     </div>
   </div>
