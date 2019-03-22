@@ -19,10 +19,10 @@
     "web-storage-cache": "^1.0.3"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.3",
-    "@vue/cli-plugin-eslint": "^3.0.3",
-    "@vue/cli-service": "^3.0.3",
-    "@vue/eslint-config-standard": "^3.0.3",
+    "@vue/cli-plugin-babel": "^4.0.0",
+    "@vue/cli-plugin-eslint": "^4.0.0",
+    "@vue/cli-service": "^4.0.0",
+    "@vue/eslint-config-standard": "^4.0.0",
     "mockjs": "^1.0.1-beta3",
     "node-sass": "^4.9.3",
     "sass-loader": "^7.1.0",
