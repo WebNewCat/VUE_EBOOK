@@ -13,12 +13,14 @@ module.exports = {
     ? './'
     : '/',
   devServer: {
+		/*
     before(app) {
       mock(app, '/book/home', mockBookHomeData)
       mock(app, '/book/shelf', mockBookShelfData)
       mock(app, '/book/list', mockBookList)
       mock(app, '/book/flat-list', mockBookFlatList)
     }
+		*/
   },
 	configureWebpack:{
 		performance:{
