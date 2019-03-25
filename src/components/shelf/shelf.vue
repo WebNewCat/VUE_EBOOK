@@ -37,8 +37,6 @@
         </div>
       </div>
     </div>
-    <div class="book-shelf-statistics" v-show="showType === 0">{{$t('shelf.statistic').replace('$1', publicNumber).replace('$2', privateNumber)}}
-    </div>
   </div>
 </template>
 
