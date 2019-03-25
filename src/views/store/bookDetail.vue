@@ -51,19 +51,19 @@
           </div>
         </div>
       </div>
-      <div class="book-detail-content-wrapper">
-        <div class="book-detail-content-title">{{$t('detail.trial')}}</div>
+     <div class="book-detail-content-wrapper">
+       <!-- <div class="book-detail-content-title">{{$t('detail.trial')}}</div> -->
         <div class="book-detail-content-list-wrapper">
-          <div class="loading-text-wrapper" v-if="!this.displayed">
+<!--          <div class="loading-text-wrapper" >
             <span class="loading-text">{{$t('detail.loading')}}</span>
-          </div>
+          </div> -->
         </div>
-        <div id="preview" v-show="this.displayed" ref="preview"></div>
+        <!-- <div id="preview"  ref="preview"></div> -->
       </div>
     </scroll>
     <div class="bottom-wrapper">
       <div class="bottom-btn" @click.stop.prevent="readBook()">{{$t('detail.read')}}</div>
-      <div class="bottom-btn" @click.stop.prevent="trialListening()">{{$t('detail.listen')}}</div>
+    <!--  <div class="bottom-btn" @click.stop.prevent="trialListening()">{{$t('detail.listen')}}</div> -->
       <div class="bottom-btn" @click.stop.prevent="addOrRemoveShelf()">
         <span class="icon-check" v-if="inBookShelf"></span>
         {{inBookShelf ? $t('detail.isAddedToShelf') : $t('detail.addOrRemoveShelf')}}
@@ -271,15 +271,6 @@
           this.navigation = nav
           if (this.navigation.toc && this.navigation.toc.length > 1) {
             this.display(this.navigation.toc[1].href)
-              .then(section => {
-                if (this.$refs.scroll) {
-                  this.$refs.scroll.refresh()
-                }
-                this.displayed = true
-                const reg = new RegExp('<.+?>', 'g')
-                const text = section.output.replace(reg, '').replace(/\s\s/g, '')
-                this.description = text
-              })
           }
         })
       },
